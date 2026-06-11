@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMB Services - Report Accident</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.15);
+}
+
+h1{
+    color:#d60000;
+}
+
+video,canvas,img{
+    width:100%;
+    max-width:500px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+button{
+    background:#d60000;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    margin:10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#b00000;
+}
+
+.location-box{
+    margin-top:20px;
+    background:#eee;
+    padding:15px;
+    border-radius:10px;
+}
+
+#capturedImage{
+    display:none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚑 AMB Services</h1>
+    <h2>Report Accident</h2>
+
+    <button onclick="startCamera()">
+        Open Camera
+    </button>
+
+    <video id="video" autoplay playsinline></video>
+
+    <br>
+
+    <button onclick="capturePhoto()">
+        Capture Accident Photo
+    </button>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <img id="capturedImage">
+
+    <div class="location-box">
+        <h3>GPS Location</h3>
+
+        <p>
+            Latitude:
+            <span id="lat">Waiting...</span>
+        </p>
+
+        <p>
+            Longitude:
+            <span id="lng">Waiting...</span>
+        </p>
+
+        <button onclick="getLocation()">
+            Detect Location
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+let stream;
+
+async function startCamera(){
+
+    try{
+
+        stream = await navigator.mediaDevices.getUserMedia({
+            video:{
+                facingMode:"environment"
+            }
+        });
+
+        document.getElementById("video").srcObject = stream;
+
+    }catch(err){
+
+        alert(
+          "Camera access denied or unsupported.\n\n" +
+          "Use HTTPS or localhost and allow camera permission."
+        );
+
+        console.error(err);
+    }
+}
+
+function capturePhoto(){
+
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const img = document.getElementById("capturedImage");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(video,0,0);
+
+    const imageData = canvas.toDataURL("image/png");
+
+    img.src = imageData;
+    img.style.display = "block";
+
+    if(stream){
+        stream.getTracks().forEach(track => track.stop());
+    }
+
+    getLocation();
+}
+
+function getLocation(){
+
+    if(!navigator.geolocation){
+
+        alert("Geolocation not supported");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            document.getElementById("lat").innerText =
+                position.coords.latitude;
+
+            document.getElementById("lng").innerText =
+                position.coords.longitude;
+
+            console.log("Latitude:",position.coords.latitude);
+            console.log("Longitude:",position.coords.longitude);
+
+        },
+
+        function(error){
+
+            alert(
+                "Please allow location permission."
+            );
+
+            console.error(error);
+        },
+
+        {
+            enableHighAccuracy:true,
+            timeout:10000,
+            maximumAge:0
+        }
+
+    );
+}
+
+</script>
+
+</body>
+</html>
+

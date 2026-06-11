@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMB Services</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* Navbar */
+nav{
+    background:#fff;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+    color:#e60000;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.nav-buttons button{
+    padding:10px 20px;
+    margin-left:10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.login{
+    background:white;
+    color:#e60000;
+    border:1px solid #e60000 !important;
+}
+
+.register{
+    background:#e60000;
+    color:white;
+}
+
+/* Hero Section */
+.hero{
+    background:linear-gradient(to right,#e60000,#b30000);
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.hero button{
+    padding:15px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:#e60000;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* Features */
+.features{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.features h2{
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.feature-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.feature{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.feature h3{
+    margin:15px 0;
+    color:#e60000;
+}
+
+/* How it Works */
+.steps{
+    background:#ececec;
+    padding:80px 20px;
+    text-align:center;
+}
+
+.steps h2{
+    margin-bottom:40px;
+    font-size:36px;
+}
+
+.step-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+}
+
+.step{
+    width:220px;
+}
+
+.circle{
+    width:60px;
+    height:60px;
+    background:#e60000;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+/* Portal Section */
+.portal{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.portal h2{
+    margin-bottom:40px;
+}
+
+.portal-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.portal-buttons button{
+    padding:20px 40px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.public{
+    background:#e60000;
+}
+
+.driver{
+    background:#0066cc;
+}
+
+.admin{
+    background:#333;
+}
+
+/* Footer */
+footer{
+    background:#b30000;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">AMB Services</div>
+
+    <div class="nav-buttons">
+        <button class="login">Login</button>
+        <button class="register">Register</button>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Emergency Ambulance Assistance</h1>
+    <p>
+        Report accidents instantly with GPS location and help save lives.
+    </p>
+
+    <button>🚑 Report Accident Now</button>
+</section>
+
+<section class="features">
+    <h2>Our Features</h2>
+
+    <div class="feature-container">
+
+        <div class="feature">
+            <h3>📸 Camera Upload</h3>
+            <p>Capture accident images directly from your phone.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📍 GPS Detection</h3>
+            <p>Automatic location detection for faster response.</p>
+        </div>
+
+        <div class="feature">
+            <h3>🚑 Smart Dispatch</h3>
+            <p>Nearest ambulance receives emergency request.</p>
+        </div>
+
+        <div class="feature">
+            <h3>⏱ Fast Response</h3>
+            <p>Reduce emergency response time significantly.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="steps">
+    <h2>How It Works</h2>
+
+    <div class="step-container">
+
+        <div class="step">
+            <div class="circle">1</div>
+            <h3>Capture Accident</h3>
+        </div>
+
+        <div class="step">
+            <div class="circle">2</div>
+            <h3>Upload Photo</h3>
+        </div>
+
+        <div class="step">
+            <div class="circle">3</div>
+            <h3>Ambulance Assigned</h3>
+        </div>
+
+        <div class="step">
+            <div class="circle">4</div>
+            <h3>Help Arrives</h3>
+        </div>
+
+    </div>
+</section>
+
+<section class="portal">
+    <h2>Choose Portal</h2>
+
+    <div class="portal-buttons">
+       <a href="public.html"> <button class="public">Public Login</button></a>
+       <a href="driver.html"><button class="driver">Driver Login</button> </a> 
+        <button class="admin">Admin Login</button>
+    </div>
+</section>
+
+<footer>
+    <h3>AMB Services</h3>
+    <p>Emergency Ambulance Response Platform</p>
+</footer>
+
+</body>
+</html>
+

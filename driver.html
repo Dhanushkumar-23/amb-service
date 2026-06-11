@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMB Services - Driver Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.logo{
+    text-align:center;
+    color:#d40000;
+    margin-bottom:20px;
+}
+
+.logo h1{
+    font-size:30px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input, select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#d40000;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#b00000;
+}
+
+.status{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <h1>🚑 AMB Services</h1>
+        <p>Driver Portal</p>
+    </div>
+
+    <h2>Driver Login & Vehicle Details</h2>
+
+    <form id="driverForm">
+
+        <div class="form-group">
+            <label>Driver Name</label>
+            <input type="text" id="driverName" required>
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" id="mobile" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" required>
+        </div>
+
+        <div class="form-group">
+            <label>Ambulance Vehicle Number</label>
+            <input type="text" id="vehicleNumber" placeholder="TN01AB1234" required>
+        </div>
+
+        <div class="form-group">
+            <label>Vehicle Type</label>
+            <select id="vehicleType">
+                <option>Basic Life Support (BLS)</option>
+                <option>Advanced Life Support (ALS)</option>
+                <option>ICU Ambulance</option>
+                <option>Neonatal Ambulance</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Vehicle Capacity</label>
+            <input type="number" id="capacity" placeholder="Patients Capacity">
+        </div>
+
+        <div class="form-group">
+            <label>Driving License Number</label>
+            <input type="text" id="license" required>
+        </div>
+
+        <div class="form-group">
+            <label>Current Status</label>
+            <select id="status">
+                <option>Available</option>
+                <option>Busy</option>
+                <option>Offline</option>
+            </select>
+        </div>
+
+        <button e="submit">
+           <a href="driverpage.html"> Login & Register Vehicle</a>
+        </button></a>
+
+    </form>
+
+    <div class="status" id="result"></div>
+
+</div>
+
+<script>
+document.getElementById("driverForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const driverData = {
+        driverName: document.getElementById("driverName").value,
+        mobile: document.getElementById("mobile").value,
+        vehicleNumber: document.getElementById("vehicleNumber").value,
+        vehicleType: document.getElementById("vehicleType").value,
+        capacity: document.getElementById("capacity").value,
+        license: document.getElementById("license").value,
+        status: document.getElementById("status").value
+    };
+
+    console.log(driverData);
+
+    document.getElementById("result").innerHTML =
+        "✅ Driver Logged In Successfully";
+
+});
+</script>
+
+</body>
+</html>
+
